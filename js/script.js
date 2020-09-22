@@ -16,9 +16,9 @@ $(document).ready(
       "success": function (data, stato) {
         renderMovie(data.results);
       },
-      // error: function (richiesta, stato, errori) {
-      // alert("E' avvenuto un errore. " + errore);
-      // }
+      error: function (richiesta, stato, errori) {
+      alert("E' avvenuto un errore. " + errore);
+      }
     });
 
     function renderMovie(movies){
@@ -32,7 +32,7 @@ $(document).ready(
 
         var context = {
           "title": movies[i].title,
-          "original-tile": movies[i].original_title,
+          "original-title": movies[i].original_title,
           "language": movies[i].original_language,
           "vote": movies[i].vote_average
         };
