@@ -51,22 +51,21 @@ $(document).ready(
     // /template Handlebars + oggetti
 
     // ricerca film
+    // keypress
       $('#cerca').keydown(function(event){
         if (event.which==13) {
           var search = $('#cerca').val();
 
           chiamataFilm(search);
-
         }
       });
 
+      // button
       $(".clicca").click(
         function(){
           var search = $('#cerca').val();
           chiamataFilm(search);
-
        });
-
      // /ricerca film
 
   });
