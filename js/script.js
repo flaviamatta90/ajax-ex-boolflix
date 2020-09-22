@@ -51,15 +51,22 @@ $(document).ready(
     // /template Handlebars + oggetti
 
     // ricerca film
-     $('#cerca').keydown(function(event){
-       if (event.which==13) {
-         var search = $('#cerca').val();
-         chiamataFilm(search);
+      $('#cerca').keydown(function(event){
+        if (event.which==13) {
+          var search = $('#cerca').val();
 
-         $('#cerca').val('');
+          chiamataFilm(search);
 
-       }
-     });
+          $('#cerca').val('');
+        }
+      });
 
+      $(".clicca").click(
+        function(){
+          var search = $('.clicca');
+          chiamataFilm(search);
+       });
+
+     // /ricerca film
 
   });
