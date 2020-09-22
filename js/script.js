@@ -2,7 +2,10 @@
 $(document).ready(
   function (){
 
-    var searchMovies = "Ritorno al futuro";
+    var searchMovies = "";
+
+    // chiamata api
+    function chiamataFilm(searchMovies) {
     $.ajax(
     {
       url: "https://api.themoviedb.org/3/search/movie",
@@ -20,9 +23,11 @@ $(document).ready(
       alert("E' avvenuto un errore. " + errore);
       }
     });
+  }
+      // /chiamata api
 
+    // template Handlebars + oggetti
     function renderMovie(movies){
-      // console.log(movies);
 
       var source = $("#entry-template").html();
       var template = Handlebars.compile(source);
@@ -41,10 +46,25 @@ $(document).ready(
 
         $("#movie").append(html);
 
-    }
       }
+    }
+    // /template Handlebars + oggetti
 
+    // ricerca film
+     $('#cerca').keydown(function(event){
+       if (event.which==13) {
+         var search = $('#cerca').val();
+         chiamataFilm(search);
 
+         $('#cerca').val('');
 
+         $('#cerca').keydown(function(){
+         });
+       }
+     });
+
+     // $('.click').click(function(){
+     //   $('#cerca').toggle();
+     // });
 
   });
