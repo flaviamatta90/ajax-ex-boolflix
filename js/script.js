@@ -57,14 +57,14 @@ $(document).ready(
 
           chiamataFilm(search);
 
-          $('#cerca').val('');
         }
       });
 
       $(".clicca").click(
         function(){
-          var search = $('.clicca');
+          var search = $('#cerca').val();
           chiamataFilm(search);
+
        });
 
      // /ricerca film
