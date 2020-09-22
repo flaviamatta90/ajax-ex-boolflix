@@ -28,7 +28,7 @@ $(document).ready(
 
     // template Handlebars + oggetti
     function renderMovie(movies){
-
+      $("#movie").html("");
       var source = $("#entry-template").html();
       var template = Handlebars.compile(source);
 
@@ -58,13 +58,8 @@ $(document).ready(
 
          $('#cerca').val('');
 
-         $('#cerca').keydown(function(){
-         });
        }
      });
 
-     // $('.click').click(function(){
-     //   $('#cerca').toggle();
-     // });
 
   });
