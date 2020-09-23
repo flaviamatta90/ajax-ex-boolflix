@@ -35,7 +35,7 @@ $(document).ready(
 
       for (var i = 0; i < movies.length; i++){
 
-        var vote = movies[i].vote_average;
+        var vote = rightVote(movies[i].vote_average);
 
         var context = {
           "title": movies[i].title,
@@ -80,7 +80,6 @@ $(document).ready(
         console.log(newVote);
 
       }
-
 
      // /voto trasformato in stelle
 
