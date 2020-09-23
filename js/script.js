@@ -7,27 +7,27 @@ $(document).ready(
     var url = "https://api.themoviedb.org/3/search";
     var searchMovies = "";
 
-  //   function chiamataFilm(searchMovies) {
-  //   $.ajax(
-  //   {
-  //     url: url+ "/movie",
-  //     "data" : {
-  //       "api_key": "a6adae1843502c7becfac80b53ca41ac",
-  //       "query" : searchMovies,
-  //       "language" :"it-IT"
-  //     },
-  //
-  //     "method": "GET",
-  //     "success": function (data, stato) {
-  //       renderMovies(data.results);
-  //     },
-  //     error: function (richiesta, stato, errori) {
-  //     alert("E' avvenuto un errore. " + errore);
-  //     }
-  //   });
-  // }
-      // /chiamata api film
+    function chiamataFilm(searchMovies) {
+    $.ajax(
+    {
+      url: url+ "/movie",
+      "data" : {
+        "api_key": "a6adae1843502c7becfac80b53ca41ac",
+        "query" : searchMovies,
+        "language" :"it-IT"
+      },
 
+      "method": "GET",
+      "success": function (data, stato) {
+        renderMovies(data.results);
+      },
+      error: function (richiesta, stato, errori) {
+      alert("E' avvenuto un errore. " + errore);
+      }
+    });
+  }
+      // /chiamata api film
+      var searchTv = "";
       function chiamataFilm(searchTv) {
       $.ajax(
       {
