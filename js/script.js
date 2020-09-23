@@ -74,12 +74,21 @@ $(document).ready(
 
      // voto trasformato in stelle
      function rightVote(vote) {
-
         var newVote = Math.ceil(vote / 2);
 
-        console.log(newVote);
+        var fullStar = '<i class=\"fas fa-star\"></i>';
+        var emptyStar = '<i class=\"far fa-star\"></i>';
+        var star = "";
 
+        for (var i = 0; i < newVote; i++) {
+          star += fullStar;
+        }
+        for (var i = 0; i < (5 - newVote); i++) {
+          star += emptyStar;
+        }
+        return star;
       }
+
 
      // /voto trasformato in stelle
 
