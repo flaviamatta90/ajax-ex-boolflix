@@ -25,32 +25,27 @@ $(document).ready(
       alert("E' avvenuto un errore. " + errore);
       }
     });
+
+    $.ajax(
+    {
+      url: url+ "/tv",
+      "data" : {
+        "api_key": "a6adae1843502c7becfac80b53ca41ac",
+        "query" : searchMovies,
+        "language" :"it-IT"
+      },
+
+      "method": "GET",
+      "success": function (data, stato) {
+        renderMovies(data.results);
+      },
+      error: function (richiesta, stato, errori) {
+      alert("E' avvenuto un errore. " + errore);
+      }
+    });
+
   }
       // /chiamata api film
-      var searchTv = "";
-      function chiamataFilm(searchTv) {
-      $.ajax(
-      {
-        url: url+ "/tv",
-        "data" : {
-          "api_key": "a6adae1843502c7becfac80b53ca41ac",
-          "query" : searchTv,
-          "language" :"it-IT"
-        },
-
-        "method": "GET",
-        "success": function (data, stato) {
-          renderMovies(data.results);
-        },
-        error: function (richiesta, stato, errori) {
-        alert("E' avvenuto un errore. " + errore);
-        }
-      });
-    }
-
-      // chiamata api telefilm
-
-        // /chiamata api telefilm
 
     // template Handlebars + oggetti
     function renderMovies(movies){
@@ -66,7 +61,11 @@ $(document).ready(
 
         var context = {
           "title": movies[i].title,
+          "name" : movies[i].name,
           "original-title": movies[i].original_title,
+          "original-name": movies[i].original_name,
+
+          "original-name" : movies[i].original_name,
           "language": language,
           "vote": vote
         };
@@ -86,6 +85,7 @@ $(document).ready(
           var search = $('#cerca').val();
           $("#cerca").val("");
           chiamataFilm(search);
+
         }
       });
 
@@ -95,6 +95,7 @@ $(document).ready(
           var search = $('#cerca').val();
           $("#cerca").val("");
           chiamataFilm(search);
+
        });
      // /ricerca film
 
