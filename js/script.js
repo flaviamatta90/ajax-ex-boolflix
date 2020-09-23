@@ -36,11 +36,12 @@ $(document).ready(
       for (var i = 0; i < movies.length; i++){
 
         var vote = rightVote(movies[i].vote_average);
+        var language = flag(movies[i].original_language);
 
         var context = {
           "title": movies[i].title,
           "original-title": movies[i].original_title,
-          "language": movies[i].original_language,
+          "language": language,
           "vote": vote
         };
 
@@ -89,8 +90,21 @@ $(document).ready(
         return star;
       }
 
-
      // /voto trasformato in stelle
+
+
+     // lingua trasformata in bandiera
+      var bandiere = ["EN","IT","ES","DE","FR","CHN","US","RUS","JPN","BRA"];
+
+       function flag(language){
+        if (bandiere.includes(language)) {
+          return '<img src="img/'+ language +'.svg">';
+        }
+        else{
+          return language;
+        }
+      };
+       // /lingua trasformata in bandiera
 
 
   });
