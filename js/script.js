@@ -62,13 +62,12 @@ $(document).ready(
         var context = {
           "title": movies[i].title,
           "name" : movies[i].name,
-          "original-title": movies[i].original_title,
+          "original-name": movies[i].original_title,
           "original-name": movies[i].original_name,
-
-          "original-name" : movies[i].original_name,
           "language": language,
           "vote": vote
         };
+
 
         var html = template(context);
 
