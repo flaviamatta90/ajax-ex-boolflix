@@ -94,10 +94,10 @@ $(document).ready(
 
 
      // lingua trasformata in bandiera
-      var bandiere = ["EN","IT","ES","DE","FR","CHN","US","RUS","JPN","BRA"];
+      var bandiereImg = ["EN","IT","ES","DE","FR","CHN","US","RUS","JPN","BRA"];
 
        function flag(language){
-        if (bandiere.includes(language)) {
+        if (bandiereImg.includes(language)) {
           return '<img src="img/'+ language +'.svg">';
         }
         else{
