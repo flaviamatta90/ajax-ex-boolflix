@@ -2,29 +2,55 @@
 $(document).ready(
   function (){
 
+    // chiamata api film
+
+    var url = "https://api.themoviedb.org/3/search";
     var searchMovies = "";
 
-    // chiamata api
-    function chiamataFilm(searchMovies) {
-    $.ajax(
-    {
-      url: "https://api.themoviedb.org/3/search/movie",
-      "data" : {
-        "api_key": "a6adae1843502c7becfac80b53ca41ac",
-        "query" : searchMovies,
-        "language" :"it-IT"
-      },
+  //   function chiamataFilm(searchMovies) {
+  //   $.ajax(
+  //   {
+  //     url: url+ "/movie",
+  //     "data" : {
+  //       "api_key": "a6adae1843502c7becfac80b53ca41ac",
+  //       "query" : searchMovies,
+  //       "language" :"it-IT"
+  //     },
+  //
+  //     "method": "GET",
+  //     "success": function (data, stato) {
+  //       renderMovies(data.results);
+  //     },
+  //     error: function (richiesta, stato, errori) {
+  //     alert("E' avvenuto un errore. " + errore);
+  //     }
+  //   });
+  // }
+      // /chiamata api film
 
-      "method": "GET",
-      "success": function (data, stato) {
-        renderMovies(data.results);
-      },
-      error: function (richiesta, stato, errori) {
-      alert("E' avvenuto un errore. " + errore);
-      }
-    });
-  }
-      // /chiamata api
+      function chiamataFilm(searchTv) {
+      $.ajax(
+      {
+        url: url+ "/tv",
+        "data" : {
+          "api_key": "a6adae1843502c7becfac80b53ca41ac",
+          "query" : searchTv,
+          "language" :"it-IT"
+        },
+
+        "method": "GET",
+        "success": function (data, stato) {
+          renderMovies(data.results);
+        },
+        error: function (richiesta, stato, errori) {
+        alert("E' avvenuto un errore. " + errore);
+        }
+      });
+    }
+
+      // chiamata api telefilm
+
+        // /chiamata api telefilm
 
     // template Handlebars + oggetti
     function renderMovies(movies){
