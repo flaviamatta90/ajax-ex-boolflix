@@ -17,7 +17,7 @@ $(document).ready(
 
       "method": "GET",
       "success": function (data, stato) {
-        renderMovie(data.results);
+        renderMovies(data.results);
       },
       error: function (richiesta, stato, errori) {
       alert("E' avvenuto un errore. " + errore);
@@ -27,7 +27,7 @@ $(document).ready(
       // /chiamata api
 
     // template Handlebars + oggetti
-    function renderMovie(movies){
+    function renderMovies(movies){
       $("#movie").html("");
       var source = $("#entry-template").html();
       var template = Handlebars.compile(source);
@@ -35,11 +35,13 @@ $(document).ready(
 
       for (var i = 0; i < movies.length; i++){
 
+        var vote = movies[i].vote_average;
+
         var context = {
           "title": movies[i].title,
           "original-title": movies[i].original_title,
           "language": movies[i].original_language,
-          "vote": movies[i].vote_average
+          "vote": vote
         };
 
         var html = template(context);
@@ -52,10 +54,10 @@ $(document).ready(
 
     // ricerca film
     // keypress
-      $('#cerca').keydown(function(event){
+      $('#cerca').keyup(function(event){
         if (event.which==13) {
           var search = $('#cerca').val();
-
+          $("#cerca").val("");
           chiamataFilm(search);
         }
       });
@@ -64,8 +66,23 @@ $(document).ready(
       $(".clicca").click(
         function(){
           var search = $('#cerca').val();
+          $("#cerca").val("");
           chiamataFilm(search);
        });
      // /ricerca film
+
+
+     // voto trasformato in stelle
+     function rightVote(vote) {
+
+        var newVote = Math.ceil(vote / 2);
+
+        console.log(newVote);
+
+      }
+
+
+     // /voto trasformato in stelle
+
 
   });
