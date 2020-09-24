@@ -6,25 +6,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <title>Titolo</title>
+    <title>Boolflix</title>
   </head>
   <body>
 
-    <div class="search">
-      <input id="cerca" type="text" placeholder="Cerca" name="" value="">
-      <button class="clicca">Vai</button>
-    </div>
+    <header>
+        <div class="title">
+          <h1>BOOLFLIX</h1>
+        </div>
+        <div class ="search">
+        <input id="cerca" type="text" placeholder="Cerca" name="" value="">
+        <button class="clicca">Vai</button>
+      </div>
+    </header>
 
-    <h1>Film</h1>
+
+    <h2>Film</h2>
     <ul id="movie"> </ul>
 
-    <h1>Tv Show</h1>
+    <h2>Tv Show</h2>
     <ul id="tvshow"> </ul>
 
     <script id="entry-template" type="text/x-handlebars-template">
       <li>
         <h3>{{title}}</h3>
-        <img class = "poster" src="https://image.tmdb.org/t/p/w185{{poster}}" alt="Immagine non pres">
+        <img class = "poster" src="https://image.tmdb.org/t/p/w185{{poster}}" alt="{{{imgnull}}}">
         <h4>{{type}}</h4>
         <h4>Titolo Originale: {{original-name}}</h4>
         <p>Lingua Originale: {{{language}}}</p>

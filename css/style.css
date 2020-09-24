@@ -1,3 +1,29 @@
+*{
+  margin: 0;
+  left: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: grey;
+}
+
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  padding: 20px;
+  background-color: #000;
+}
+
+h1{
+  color: red;
+  font-size: 30px;
+  font-weight: bolder;
+}
+
 .flag{
   width:15px;
 }

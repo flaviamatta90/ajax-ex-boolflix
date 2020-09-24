@@ -57,6 +57,8 @@ $(document).ready(
 
         var vote = rightVote(results[i].vote_average);
         var language = flag(results[i].original_language);
+        // var poster = results[i].poster_path;
+
 
         var context = {
           "title": results[i].title || results[i].name,
@@ -65,8 +67,13 @@ $(document).ready(
           "vote": vote,
           "type": type,
           "poster" : results[i].poster_path,
+          "imgnull" : results[i].null,
           "overview" : results[i].overview
         };
+
+        // if(results[i].null == null ){
+        //   return "img/no-image.svg";
+        // };
 
         var html = template(context);
 
@@ -120,6 +127,12 @@ $(document).ready(
             star += emptyStar;
           }
         }
+        // for (var i = 1; i < newVote; i++) {
+        //   star += fullStar;
+        // }
+        // for (var i = 0; i < (5 - newVote); i++) {
+        //   star += emptyStar;
+        // }
         return star;
       }
      // /voto trasformato in stelle
@@ -137,6 +150,5 @@ $(document).ready(
         }
       };
        // /lingua trasformata in bandiera
-
 
   });
