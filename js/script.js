@@ -67,15 +67,18 @@ $(document).ready(
           "vote": vote,
           "type": type,
           "poster" : results[i].poster_path,
-          "imgnull" : results[i].null,
           "overview" : results[i].overview
         };
 
-        // if(results[i].null == null ){
-        //   return "img/no-image.svg";
-        // };
-
         var html = template(context);
+
+        // img
+        if(results[i].poster_path == null ){
+          var url = "img/no-image.svg";
+        }else{
+          var url = "https://image.tmdb.org/t/p/w185" + results[i].poster_path;
+        };
+        // /img
 
         if (type == "film"){
           $("#movie").append(html);

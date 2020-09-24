@@ -20,22 +20,27 @@
       </div>
     </header>
 
+    <div class="container">
+      <h2>Film</h2>
+      <ul id="movie"> </ul>
 
-    <h2>Film</h2>
-    <ul id="movie"> </ul>
+      <h2>Tv Show</h2>
+      <ul id="tvshow"> </ul>
+    </div>
 
-    <h2>Tv Show</h2>
-    <ul id="tvshow"> </ul>
 
     <script id="entry-template" type="text/x-handlebars-template">
       <li>
-        <h3>{{title}}</h3>
-        <img class = "poster" src="https://image.tmdb.org/t/p/w185{{poster}}" alt="{{{imgnull}}}">
-        <h4>{{type}}</h4>
-        <h4>Titolo Originale: {{original-name}}</h4>
-        <p>Lingua Originale: {{{language}}}</p>
-        <p>Media Voto: {{{vote}}}</p>
-        <p>{{overview}}</p>
+        <div class="template">
+          <h3>{{title}}</h3>
+          <img class = "poster" src="https://image.tmdb.org/t/p/w185{{poster}}" alt="Nessuna immagine presente">
+          <h4>{{type}}</h4>
+          <h4>Titolo Originale: {{original-name}}</h4>
+          <p>Lingua Originale: {{{language}}}</p>
+          <p>Media Voto: {{{vote}}}</p>
+          <p>{{overview}}</p>
+        </div>
+
 
       </li>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
