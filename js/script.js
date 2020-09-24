@@ -120,12 +120,6 @@ $(document).ready(
             star += emptyStar;
           }
         }
-        // for (var i = 1; i < newVote; i++) {
-        //   star += fullStar;
-        // }
-        // for (var i = 0; i < (5 - newVote); i++) {
-        //   star += emptyStar;
-        // }
         return star;
       }
      // /voto trasformato in stelle
