@@ -5,7 +5,6 @@ $(document).ready(
     // chiamata api film
     var url = "https://api.themoviedb.org/3/search";
     var search = "";
-    var poster = "https://image.tmdb.org/t/p/";
 
     function chiamataFilm(search) {
     $.ajax(
@@ -69,10 +68,14 @@ $(document).ready(
           "overview" : results[i].overview
         };
 
-
         var html = template(context);
 
-        $("#movie").append(html);
+        if (type == "film"){
+          $("#movie").append(html);
+        } else {
+          $("#tvshow").append(html);
+
+        }
 
       }
     }
