@@ -5,52 +5,54 @@ $(document).ready(
     // chiamata api film
     var url = "https://api.themoviedb.org/3/search";
     var search = "";
+    var poster = "https://image.tmdb.org/t/p/";
 
-    function chiamata(search) {
+    function chiamataFilm(search) {
     $.ajax(
-    {
-      url: url+ "/movie",
-      "data" : {
-        "api_key": "a6adae1843502c7becfac80b53ca41ac",
-        "query" : search,
-        "language" :"it-IT"
-      },
+      {
+        url: url+ "/movie",
+        "data" : {
+          "api_key": "a6adae1843502c7becfac80b53ca41ac",
+          "query" : search,
+          "language" :"it-IT"
+        },
 
-      "method": "GET",
-      "success": function (data, stato) {
-        print("film", data.results);
-      },
-      error: function (richiesta, stato, errori) {
-      alert("E' avvenuto un errore. " + errore);
-      }
-    });
+        "method": "GET",
+        "success": function (data, stato) {
+          print("film", data.results);
+        },
+        error: function (richiesta, stato, errori) {
+        alert("E' avvenuto un errore. " + errore);
+        }
+      });
+    };
 
-    $.ajax(
-    {
-      url: url+ "/tv",
-      "data" : {
-        "api_key": "a6adae1843502c7becfac80b53ca41ac",
-        "query" : search,
-        "language" :"it-IT"
-      },
+    function chiamataTv(search){
+      $.ajax(
+      {
+        url: url+ "/tv",
+        "data" : {
+          "api_key": "a6adae1843502c7becfac80b53ca41ac",
+          "query" : search,
+          "language" :"it-IT"
+        },
 
-      "method": "GET",
-      "success": function (data, stato) {
-        print("Serie Tv", data.results);
-      },
-      error: function (richiesta, stato, errori) {
-      alert("E' avvenuto un errore. " + errore);
-      }
-    });
-  }
+        "method": "GET",
+        "success": function (data, stato) {
+          print("serie-tv", data.results);
+        },
+        error: function (richiesta, stato, errori) {
+        alert("E' avvenuto un errore. " + errore);
+        }
+      });
+    };
       // /chiamata api film
 
     // template Handlebars + oggetti
     function print(type, results){
-      $("#movie").html("");
+
       var source = $("#entry-template").html();
       var template = Handlebars.compile(source);
-
 
       for (var i = 0; i < results.length; i++){
 
@@ -62,7 +64,9 @@ $(document).ready(
           "original-name": results[i].original_title || results[i].original_name,
           "language": language,
           "vote": vote,
-          "type": type
+          "type": type,
+          "poster" : results[i].poster_path,
+          "overview" : results[i].overview
         };
 
 
@@ -79,9 +83,10 @@ $(document).ready(
       $('#cerca').keyup(function(event){
         if (event.which==13) {
           var search = $('#cerca').val();
+          $("#movie").html("");
           $("#cerca").val("");
-          chiamata(search);
-
+          chiamataFilm(search);
+          chiamataTv(search);
         }
       });
 
@@ -89,9 +94,10 @@ $(document).ready(
       $(".clicca").click(
         function(){
           var search = $('#cerca').val();
+          $("#movie").html("");
           $("#cerca").val("");
-          chiamata(search);
-
+          chiamataFilm(search);
+          chiamataTv(search);
        });
      // /ricerca film
 
