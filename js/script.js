@@ -3,23 +3,22 @@ $(document).ready(
   function (){
 
     // chiamata api film
-
     var url = "https://api.themoviedb.org/3/search";
-    var searchMovies = "";
+    var search = "";
 
-    function chiamataFilm(searchMovies) {
+    function chiamata(search) {
     $.ajax(
     {
       url: url+ "/movie",
       "data" : {
         "api_key": "a6adae1843502c7becfac80b53ca41ac",
-        "query" : searchMovies,
+        "query" : search,
         "language" :"it-IT"
       },
 
       "method": "GET",
       "success": function (data, stato) {
-        renderMovies(data.results);
+        print("film", data.results);
       },
       error: function (richiesta, stato, errori) {
       alert("E' avvenuto un errore. " + errore);
@@ -31,41 +30,39 @@ $(document).ready(
       url: url+ "/tv",
       "data" : {
         "api_key": "a6adae1843502c7becfac80b53ca41ac",
-        "query" : searchMovies,
+        "query" : search,
         "language" :"it-IT"
       },
 
       "method": "GET",
       "success": function (data, stato) {
-        renderMovies(data.results);
+        print("Serie Tv", data.results);
       },
       error: function (richiesta, stato, errori) {
       alert("E' avvenuto un errore. " + errore);
       }
     });
-
   }
       // /chiamata api film
 
     // template Handlebars + oggetti
-    function renderMovies(movies){
+    function print(type, results){
       $("#movie").html("");
       var source = $("#entry-template").html();
       var template = Handlebars.compile(source);
 
 
-      for (var i = 0; i < movies.length; i++){
+      for (var i = 0; i < results.length; i++){
 
-        var vote = rightVote(movies[i].vote_average);
-        var language = flag(movies[i].original_language);
+        var vote = rightVote(results[i].vote_average);
+        var language = flag(results[i].original_language);
 
         var context = {
-          "title": movies[i].title,
-          "name" : movies[i].name,
-          "original-name": movies[i].original_title,
-          "original-name": movies[i].original_name,
+          "title": results[i].title || results[i].name,
+          "original-name": results[i].original_title || results[i].original_name,
           "language": language,
-          "vote": vote
+          "vote": vote,
+          "type": type
         };
 
 
@@ -83,7 +80,7 @@ $(document).ready(
         if (event.which==13) {
           var search = $('#cerca').val();
           $("#cerca").val("");
-          chiamataFilm(search);
+          chiamata(search);
 
         }
       });
@@ -93,7 +90,7 @@ $(document).ready(
         function(){
           var search = $('#cerca').val();
           $("#cerca").val("");
-          chiamataFilm(search);
+          chiamata(search);
 
        });
      // /ricerca film
@@ -103,28 +100,34 @@ $(document).ready(
      function rightVote(vote) {
         var newVote = Math.ceil(vote / 2);
 
-        var fullStar = '<i class=\"fas fa-star\"></i>';
-        var emptyStar = '<i class=\"far fa-star\"></i>';
+        var fullStar = "<i class='fas fa-star'></i>";
+        var emptyStar = "<i class='far fa-star'></i>";;
         var star = "";
 
-        for (var i = 0; i < newVote; i++) {
-          star += fullStar;
+        for(var i = 1; i <= 5; i++) {
+          if (i <= newVote){
+            star += fullStar;
+          } else {
+            star += emptyStar;
+          }
         }
-        for (var i = 0; i < (5 - newVote); i++) {
-          star += emptyStar;
-        }
+        // for (var i = 1; i < newVote; i++) {
+        //   star += fullStar;
+        // }
+        // for (var i = 0; i < (5 - newVote); i++) {
+        //   star += emptyStar;
+        // }
         return star;
       }
-
      // /voto trasformato in stelle
 
 
      // lingua trasformata in bandiera
-      var bandiereImg = ["en","it","es","de","fr","chn","us","rus","jpn","bra"];
+      var bandiereImg = ["en","it","es","de","fr","chn","us","rus","ja","bra"];
 
        function flag(language){
         if (bandiereImg.includes(language)) {
-          return '<img src="img/'+ language +'.svg">';
+          return "<img class='flag' src='img/"+ language +".svg'>";
         }
         else{
           return language;
