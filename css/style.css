@@ -58,8 +58,18 @@ img.poster {
   padding: 10px;
   width: 362px;
   height: 530px;
+  display: none;
 }
 
 .behind-img{
-  display: none;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 360px;
+  height: 530px;
+  background-color: #000;
+  color: #fff;
+  font-family: 'Epilogue', sans-serif;
+  padding: 20px;
 }
