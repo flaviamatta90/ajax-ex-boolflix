@@ -31,15 +31,17 @@
 
     <script id="entry-template" type="text/x-handlebars-template">
       <li>
-        <div class="template">
+        <div class="path">
+          <img class = "poster" src="{{poster}}" alt={{title}}>
+        </div>
+        <!-- <div class="template"> -->
           <h3>{{title}}</h3>
-          <img class = "poster" src="https://image.tmdb.org/t/p/w185{{poster}}" alt="Nessuna immagine presente">
           <h4>{{type}}</h4>
           <h4>Titolo Originale: {{original-name}}</h4>
           <p>Lingua Originale: {{{language}}}</p>
           <p>Media Voto: {{{vote}}}</p>
           <p>{{overview}}</p>
-        </div>
+        <!-- </div> -->
 
 
       </li>

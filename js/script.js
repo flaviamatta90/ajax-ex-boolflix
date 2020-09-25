@@ -57,27 +57,29 @@ $(document).ready(
 
         var vote = rightVote(results[i].vote_average);
         var language = flag(results[i].original_language);
-        // var poster = results[i].poster_path;
+
+        if(results[i].poster_path == null ){
+          var poster = "img/no_poster.png";
+        }else{
+          var poster = "https://image.tmdb.org/t/p/w342" + results[i].poster_path;
+        };
+
 
 
         var context = {
+          "poster" : poster,
           "title": results[i].title || results[i].name,
           "original-name": results[i].original_title || results[i].original_name,
           "language": language,
           "vote": vote,
           "type": type,
-          "poster" : results[i].poster_path,
           "overview" : results[i].overview
         };
 
         var html = template(context);
 
         // img
-        if(results[i].poster_path == null ){
-          var url = "img/no-image.svg";
-        }else{
-          var url = "https://image.tmdb.org/t/p/w185" + results[i].poster_path;
-        };
+
         // /img
 
         if (type == "film"){
