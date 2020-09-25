@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@1,900&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>Boolflix</title>
@@ -20,30 +21,31 @@
       </div>
     </header>
 
-    <div class="container-movies">
+    <div class="container">
       <h2>Film</h2>
-      <ul id="movie"> </ul>
-    </div>
+      <div class="container-movies">
+        <ul id="movie"> </ul>
+      </div>
 
-    <div class="container-tv">
       <h2>Tv Show</h2>
-      <ul id="tvshow"> </ul>
+      <div class="container-tv">
+        <ul id="tvshow"> </ul>
+      </div>
     </div>
 
-
-
-<div class="template">
-    <script id="entry-template" type="text/x-handlebars-template">
-
-          <img class = "poster" src="{{poster}}" alt={{title}}>
-          <!-- <h3>{{title}}</h3>
+    <div class="template">
+      <script id="entry-template" type="text/x-handlebars-template">
+        <img class = "poster" src="{{poster}}" alt={{title}}>
+        <div class="behind-img">
+          <h3>{{title}}</h3>
           <h4>{{type}}</h4>
           <h4>Titolo Originale: {{original-name}}</h4>
           <p>Lingua Originale: {{{language}}}</p>
           <p>Media Voto: {{{vote}}}</p> -->
-          <!-- <p>{{overview}}</p> -->
+          <p>{{overview}}</p>
         </div>
 
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/script.js" charset="utf-8"></script>

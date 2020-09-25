@@ -5,7 +5,8 @@
 }
 
 body{
-  background-color: grey;
+  background-color: #4E5055;
+  font-family: 'Epilogue', sans-serif;
 }
 
 header{
@@ -20,8 +21,15 @@ header{
 
 h1{
   color: red;
-  font-size: 30px;
+  font-size: 50px;
   font-weight: bolder;
+}
+
+h2 {
+  text-align: center;
+  font-size: 40px;
+  font-weight: bolder;
+  margin: 20px;
 }
 
 .flag{
@@ -46,6 +54,12 @@ h1{
   flex-wrap: wrap;
 }
 
-.poster {
+img.poster {
   padding: 10px;
+  width: 362px;
+  height: 530px;
+}
+
+.behind-img{
+  display: none;
 }
