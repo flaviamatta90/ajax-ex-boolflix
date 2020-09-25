@@ -64,8 +64,6 @@ $(document).ready(
           var poster = "https://image.tmdb.org/t/p/w342" + results[i].poster_path;
         };
 
-
-
         var context = {
           "poster" : poster,
           "title": results[i].title || results[i].name,
@@ -81,24 +79,22 @@ $(document).ready(
         // img
 
         // /img
-
         if (type == "film"){
           $("#movie").append(html);
         } else {
           $("#tvshow").append(html);
-
         }
-
       }
     }
     // /template Handlebars + oggetti
 
-    // ricerca film
     // keypress
       $('#cerca').keyup(function(event){
         if (event.which==13) {
           var search = $('#cerca').val();
           $("#movie").html("");
+          $("#tvshow").html("");
+          
           $("#cerca").val("");
           chiamataFilm(search);
           chiamataTv(search);
@@ -110,12 +106,12 @@ $(document).ready(
         function(){
           var search = $('#cerca').val();
           $("#movie").html("");
+          $("#tvshow").html("");
           $("#cerca").val("");
           chiamataFilm(search);
           chiamataTv(search);
        });
      // /ricerca film
-
 
      // voto trasformato in stelle
      function rightVote(vote) {
@@ -132,16 +128,9 @@ $(document).ready(
             star += emptyStar;
           }
         }
-        // for (var i = 1; i < newVote; i++) {
-        //   star += fullStar;
-        // }
-        // for (var i = 0; i < (5 - newVote); i++) {
-        //   star += emptyStar;
-        // }
         return star;
       }
      // /voto trasformato in stelle
-
 
      // lingua trasformata in bandiera
       var bandiereImg = ["en","it","es","de","fr","chn","us","rus","ja","bra"];
@@ -155,5 +144,4 @@ $(document).ready(
         }
       };
        // /lingua trasformata in bandiera
-
   });

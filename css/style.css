@@ -32,23 +32,20 @@ h1{
   color: yellow;
 }
 
-/* .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 100px 0;
+.container-movies, .container-tv{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .template{
   display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    flex-basis: 200px;
-    padding: 20px;
-    margin: 10px 20px;
-    height: 360px;
-    background: rgb(46, 58, 70);
-    text-align: center;
-} */
+  justify-content: space-between;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.poster {
+  padding: 10px;
+}

@@ -20,31 +20,31 @@
       </div>
     </header>
 
-    <div class="container">
+    <div class="container-movies">
       <h2>Film</h2>
       <ul id="movie"> </ul>
+    </div>
 
+    <div class="container-tv">
       <h2>Tv Show</h2>
       <ul id="tvshow"> </ul>
     </div>
 
 
+
+<div class="template">
     <script id="entry-template" type="text/x-handlebars-template">
-      <li>
-        <div class="path">
+
           <img class = "poster" src="{{poster}}" alt={{title}}>
-        </div>
-        <!-- <div class="template"> -->
-          <h3>{{title}}</h3>
+          <!-- <h3>{{title}}</h3>
           <h4>{{type}}</h4>
           <h4>Titolo Originale: {{original-name}}</h4>
           <p>Lingua Originale: {{{language}}}</p>
-          <p>Media Voto: {{{vote}}}</p>
-          <p>{{overview}}</p>
-        <!-- </div> -->
+          <p>Media Voto: {{{vote}}}</p> -->
+          <!-- <p>{{overview}}</p> -->
+        </div>
 
 
-      </li>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/script.js" charset="utf-8"></script>
   </body>
