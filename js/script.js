@@ -94,7 +94,7 @@ $(document).ready(
           var search = $('#cerca').val();
           $("#movie").html("");
           $("#tvshow").html("");
-          
+
           $("#cerca").val("");
           chiamataFilm(search);
           chiamataTv(search);
@@ -144,4 +144,29 @@ $(document).ready(
         }
       };
        // /lingua trasformata in bandiera
+
+    //    $(document).hover(
+    //     function(){
+    //       $(this).find('img').fadeTo("fast",0.1);
+    //       $(this).find('.behind-img').toggle();
+    //
+    //       $(".behind-img").click(function(){
+    //       $(this).find('img').fadeTo("fast",1);
+    //       $(this).find('.behind-img').toggle()
+    //     },
+    //   });
+    // });
+
+    $(document).mouseenter(function(){
+
+    $(".behind-img").show();
+    $(".poster").hide();
+  });
+
+  $(document).mouseleave(function(){
+
+  $(".behind-img").hide();
+  $(".poster").show();
+});
+
   });

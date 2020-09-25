@@ -42,7 +42,6 @@ h2 {
 
 .container-movies, .container-tv{
   display: flex;
-  justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
 }
@@ -58,18 +57,20 @@ img.poster {
   padding: 10px;
   width: 362px;
   height: 530px;
-  display: none;
 }
 
 .behind-img{
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  flex-wrap: wrap;
+  float: left;
   width: 360px;
   height: 530px;
   background-color: #000;
   color: #fff;
-  font-family: 'Epilogue', sans-serif;
-  padding: 20px;
+  padding: 10px;
+  margin: 10px;
+  display: none;
+}
+
+.review{
+  padding: 10px;
+
 }
