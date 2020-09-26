@@ -139,6 +139,7 @@ $(document).ready(
       };
        // /lingua trasformata in bandiera
 
+       // mouseenter show description; mouseleave show img
        $(document).on({
          mouseenter:function(){
            $(this).find('img.poster').hide();
@@ -149,7 +150,9 @@ $(document).ready(
            $(this).find('.behind-img').hide()
          }
        },".template");
+       // /mouseenter show description; mouseleave show img
 
+       // animate background
        $(".background-container").show();
        $(".logo").animate({
           fontSize: '20em'}, 3000);
@@ -157,4 +160,6 @@ $(document).ready(
 
        $(".all-container").show();
      }, 4000);
+     // /animate background
+
   });
