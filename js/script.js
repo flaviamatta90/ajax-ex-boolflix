@@ -35,7 +35,6 @@ $(document).ready(
           "query" : search,
           "language" :"it-IT"
         },
-
         "method": "GET",
         "success": function (data, stato) {
           print("serie-tv", data.results);
@@ -48,7 +47,7 @@ $(document).ready(
       // /chiamata api film
 
     // template Handlebars + oggetti
-    function print(type, results){
+    function print(type,results){
 
       var source = $("#entry-template").html();
       var template = Handlebars.compile(source);
@@ -71,14 +70,12 @@ $(document).ready(
           "language": language,
           "vote": vote,
           "type": type,
+          "cast": results[i].cast,
           "overview" : results[i].overview
         };
 
         var html = template(context);
 
-        // img
-
-        // /img
         if (type == "film"){
           $("#movie").append(html);
         } else {
@@ -116,16 +113,13 @@ $(document).ready(
      // voto trasformato in stelle
      function rightVote(vote) {
         var newVote = Math.ceil(vote / 2);
-
-        var fullStar = "<i class='fas fa-star'></i>";
-        var emptyStar = "<i class='far fa-star'></i>";;
         var star = "";
 
         for(var i = 1; i <= 5; i++) {
           if (i <= newVote){
-            star += fullStar;
+            star += "<i class='fas fa-star'></i>";
           } else {
-            star += emptyStar;
+            star += "<i class='far fa-star'></i>";
           }
         }
         return star;
@@ -145,28 +139,15 @@ $(document).ready(
       };
        // /lingua trasformata in bandiera
 
-    //    $(document).hover(
-    //     function(){
-    //       $(this).find('img').fadeTo("fast",0.1);
-    //       $(this).find('.behind-img').toggle();
-    //
-    //       $(".behind-img").click(function(){
-    //       $(this).find('img').fadeTo("fast",1);
-    //       $(this).find('.behind-img').toggle()
-    //     },
-    //   });
-    // });
-
-    $(document).mouseenter(function(){
-
-    $(".behind-img").show();
-    $(".poster").hide();
-  });
-
-  $(document).mouseleave(function(){
-
-  $(".behind-img").hide();
-  $(".poster").show();
-});
+       $(document).on({
+         mouseenter:function(){
+           $(this).find('img.poster').hide();
+           $(this).find('.behind-img').show()
+         },
+         mouseleave:function(){
+           $(this).find('img.poster').show();
+           $(this).find('.behind-img').hide()
+         }
+       },".template");
 
   });

@@ -44,25 +44,24 @@ h2 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
+
 }
 
 .template{
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  flex-wrap: wrap;
+  float: left;
 }
 
 img.poster {
   padding: 10px;
-  width: 362px;
+  width: 342px;
   height: 530px;
 }
 
 .behind-img{
   float: left;
-  width: 360px;
-  height: 530px;
+  width: 320px;
+  height: 510px;
   background-color: #000;
   color: #fff;
   padding: 10px;
@@ -72,5 +71,4 @@ img.poster {
 
 .review{
   padding: 10px;
-
 }
