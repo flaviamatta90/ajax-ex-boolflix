@@ -12,42 +12,46 @@
   </head>
   <body>
 
-    <header>
-        <div class="title">
-          <h1>BOOLFLIX</h1>
+    <div class="background-container"><h1 class="logo">BOOLFLIX</h1></div>
+
+    <div class="all-container">
+      <header>
+          <div class="title">
+            <h1 class="header-logo">BOOLFLIX</h1>
+          </div>
+          <div class ="search">
+          <input id="cerca" type="text" placeholder="Cerca" name="" value="">
+          <button class="clicca">Vai</button>
         </div>
-        <div class ="search">
-        <input id="cerca" type="text" placeholder="Cerca" name="" value="">
-        <button class="clicca">Vai</button>
-      </div>
-    </header>
+      </header>
 
-    <div class="container">
-      <h2>Film</h2>
-      <div class="container-movies">
-        <div id="movie"> </div>
-      </div>
+      <div class="container">
+        <h2>Film</h2>
+        <div class="container-movies">
+          <div id="movie"> </div>
+        </div>
 
-      <h2>Tv Show</h2>
-      <div class="container-tv">
-        <div id="tvshow"> </div>
+        <div class="container-tv">
+          <h2>Tv Show</h2>
+          <div id="tvshow"> </div>
+        </div>
       </div>
-    </div>
 
       <script id="entry-template" type="text/x-handlebars-template">
         <div class="template">
-
-        <img class = "poster" src="{{poster}}" alt={{title}}>
-        <div class="behind-img">
-          <h3 class="review">{{title}}</h3>
-          <h4 class="review">{{type}}</h4>
-          <h4 class="review">Titolo Originale: {{original-name}}</h4>
-          <p class="review">Lingua Originale: {{{language}}}</p>
-          <p class="review">Media Voto: {{{vote}}}</p>
-          <h6 class="review">{{overview}}</h6>
-        </div>
+          <img class = "poster" src="{{poster}}" alt={{title}}>
+          <div class="behind-img">
+            <h3 class="review">{{title}}</h3>
+            <h4 class="review">{{type}}</h4>
+            <h4 class="review">Titolo Originale: {{original-name}}</h4>
+            <p class="review">Lingua Originale: {{{language}}}</p>
+            <p class="review">Media Voto: {{{vote}}}</p>
+            <h6 class="review">{{overview}}</h6>
           </div>
+        </div>
       </script>
+    </div>
+
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

@@ -150,4 +150,11 @@ $(document).ready(
          }
        },".template");
 
+       $(".background-container").show();
+       $(".logo").animate({
+          fontSize: '20em'}, 3000);
+       setTimeout(function() { $(".background-container").hide();
+
+       $(".all-container").show();
+     }, 4000);
   });
