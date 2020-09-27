@@ -18,7 +18,11 @@ $(document).ready(
         },
         "method": "GET",
         "success": function (data, stato) {
+          if(data.total_results > 0){
           print(type, data.results);
+          } else {
+            notFound(type);
+          }
         },
         error: function (error) {
         alert("E' avvenuto un errore. " + errore);
@@ -69,85 +73,101 @@ $(document).ready(
     }
     // /template Handlebars + oggetti
 
-    // pulizia del contenuto
-    function resetSearch() {
-      $("#movies").html("");
-      $("#tvshow").html("");
-      $("#cerca").val("");
-    }
-    // pulizia del contenuto
-
-    // keypress
-      $('#cerca').keyup(function(event){
-        if (event.which==13) {
-          var search = $('#cerca').val();
-          resetSearch();
-          getData("movie", search);
-          getData("tv", search);
-        }
-      });
-
-      // button
-      $(".clicca").click(
-        function(){
-          var search = $('#cerca').val();
-          resetSearch();
-          getData("movie", search);
-          getData("tv", search);
-       });
-     // /button
-
-     // voto trasformato in stelle
-     function rightVote(vote) {
-        var newVote = Math.ceil(vote / 2);
-        var star = "";
-
-        for(var i = 1; i <= 5; i++) {
-          if (i <= newVote){
-            star += "<i class='fas fa-star'></i>";
-          } else {
-            star += "<i class='far fa-star'></i>";
-          }
-        }
-        return star;
-      }
-     // /voto trasformato in stelle
-
-     // lingua trasformata in bandiera
-      var bandiereImg = ["en","it","es","de","fr","chn","us","rus","ja","bra"];
-
-       function flag(language){
-        if (bandiereImg.includes(language)) {
-          return "<img class='flag' src='img/"+ language +".svg'>";
-        }
-        else{
-          return language;
-        }
+    // funzione nel caso in cui la ricerca non produca risulatati
+    function notFound(type){
+      if (type == "movie"){
+        $("#movie").append(html);
+      } else if (type == "tv"){
+        $("#tvshow").append(html);
       };
-       // /lingua trasformata in bandiera
 
-       // mouseenter show description; mouseleave show img
-       $(document).on({
-         mouseenter:function(){
-           $(this).find('img.poster').hide();
-           $(this).find('.behind-img').show()
-         },
-         mouseleave:function(){
-           $(this).find('img.poster').show();
-           $(this).find('.behind-img').hide()
-         }
-       },".template");
-       // /mouseenter show description; mouseleave show img
+      var source = $("#not-found-template").html();
+      var template = Handlebars.compile(source);
+      var html = template();
+  }
 
-       // animate background
-       $(".background-container").show();
-       $(".logo").animate({
-          fontSize: '15em'}, 2000);
-       setTimeout(function() { $(".background-container").hide();
+  // keypress
+    $('#cerca').keyup(function(event){
+      if (event.which==13) {
+        ricerca();
+      }
+    });
 
-       $(".all-container").show();
-     }, 3000);
-     // /animate background
+    // button
+    $(".clicca").click(
+      function(){
+       ricerca();
+     });
+   // /button
+
+   // ricerca generica
+   function ricerca() {
+     var searchAll = $('#cerca').val();
+     resetSearch();
+     getData("movie", searchAll);
+     getData("tv", searchAll);
+   }
+   // ricerca generica
+
+  // pulizia del contenuto
+  function resetSearch() {
+    $("#movie").html("");
+    $("#tvshow").html("");
+    $("#cerca").val("");
+  };
+  // pulizia del contenuto
+
+   // voto trasformato in stelle
+   function rightVote(vote) {
+      var newVote = Math.ceil(vote / 2);
+      var star = "";
+
+      for(var i = 1; i <= 5; i++) {
+        if (i <= newVote){
+          star += "<i class='fas fa-star'></i>";
+        } else {
+          star += "<i class='far fa-star'></i>";
+        }
+      }
+      return star;
+    }
+   // /voto trasformato in stelle
+
+   // lingua trasformata in bandiera
+    var bandiereImg = ["en","it","es","de","fr","chn","us","rus","ja","bra"];
+
+     function flag(language){
+      if (bandiereImg.includes(language)) {
+        return "<img class='flag' src='img/"+ language +".svg'>";
+      }
+      else{
+        return language;
+      }
+    };
+     // /lingua trasformata in bandiera
+
+     // mouseenter show description; mouseleave show img
+     $(document).on({
+       mouseenter:function(){
+         $(this).find('img.poster').hide();
+         $(this).find('.behind-img').show()
+       },
+       mouseleave:function(){
+         $(this).find('img.poster').show();
+         $(this).find('.behind-img').hide()
+       }
+     },".template");
+     // /mouseenter show description; mouseleave show img
+
+     // animate background
+     $(".background-container").show();
+     $(".logo").animate({
+        fontSize: '15em'}, 2000);
+     setTimeout(function() { $(".background-container").hide();
+
+     $(".all-container").show();
+   }, 3000);
+   // /animate background
 
 
   });
