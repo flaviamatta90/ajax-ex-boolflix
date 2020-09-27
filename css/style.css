@@ -69,27 +69,42 @@ h2 {
 
 }
 
+label {
+  color: white;
+  font-size: 12px;
+}
+
 .template{
   float: left;
+  width: 342px;
+  height: 530px;
+  overflow: hidden;
+  margin: 15px;
 }
 
 img.poster {
-  padding: 10px;
-  width: 342px;
-  height: 530px;
+  width: 100%;
+  height:100%;
+  object-fit: cover;
 }
 
+.template:hover {
+  transition: transform .3s;
+  -ms-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
 .behind-img{
   float: left;
-  width: 320px;
-  height: 510px;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
   background-color: #000;
   color: #fff;
-  padding: 10px;
-  margin: 10px;
+  padding: 20px;
   display: none;
 }
 
-.review{
-  padding: 10px;
+.behind-img > * {
+  margin-bottom: 1rem;
 }

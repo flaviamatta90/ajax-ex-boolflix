@@ -16,10 +16,26 @@
 
     <div class="all-container">
       <header>
-          <div class="title">
-            <h1 class="header-logo">BOOLFLIX</h1>
-          </div>
-          <div class ="search">
+        <div class="title">
+          <h1 class="header-logo">BOOLFLIX</h1>
+        </div>
+
+        <script id="genders-template" type="text/x-handlebars-template">
+          <select class="genere">
+            <option value="all">All</option>
+            {{#each genders}}
+              <option value="{{id}}">{{name}}</option>
+            {{/each}}
+          </select>
+        </script>
+        <div id="genders-movie">
+          <label>Genere Film</label>
+        </div>
+        <div id="genders-tv">
+          <label>Genere Serie TV</label>
+        </div>
+
+        <div class="search">
           <input id="cerca" type="text" placeholder="Cerca" name="" value="">
           <button class="clicca">Vai</button>
         </div>
@@ -39,15 +55,17 @@
       </div>
 
       <script id="entry-template" type="text/x-handlebars-template">
-        <div class="template">
-          <img class = "active poster" src="{{poster}}" alt={{title}}>
+        <div class="template" data-generi="{{genres_ids}}">
+          <img class = "poster" src="{{poster}}" alt="{{title}}">
           <div class="behind-img">
-            <h3 class="review">{{title}}</h3>
-            <h4 class="review">{{type}}</h4>
-            <h4 class="review">Titolo Originale: {{original-name}}</h4>
-            <p class="review">Lingua Originale: {{{language}}}</p>
-            <p class="review">Media Voto: {{{vote}}}</p>
-            <h6 class="review">{{overview}}</h6>
+            <h3>{{title}}</h3>
+            <h4>{{type}}</h4>
+            <h4>Titolo Originale: {{original-name}}</h4>
+            <p>Lingua Originale: {{{language}}}</p>
+            <p>Media Voto: {{{vote}}}</p>
+            <h5>Attori: {{actors}}</h5>
+            <h5>Generi: {{genders}}</h5>
+            <p>{{overview}}</p>
           </div>
         </div>
       </script>
