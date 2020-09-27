@@ -2,34 +2,15 @@
 $(document).ready(
   function (){
 
-    // chiamata api film
-    var url = "https://api.themoviedb.org/3/search";
+  // var generiche
+    var url = "https://api.themoviedb.org/3/search/";
     var search = "";
 
-    function chiamataFilm(search) {
-    $.ajax(
-      {
-        url: url+ "/movie",
-        "data" : {
-          "api_key": "a6adae1843502c7becfac80b53ca41ac",
-          "query" : search,
-          "language" :"it-IT"
-        },
-
-        "method": "GET",
-        "success": function (data, stato) {
-          print("film", data.results);
-        },
-        error: function (richiesta, stato, errori) {
-        alert("E' avvenuto un errore. " + errore);
-        }
-      });
-    };
-
-    function chiamataTv(search){
+    // chiamata api
+    function getData(type, search){
       $.ajax(
       {
-        url: url+ "/tv",
+        url: url + type,
         "data" : {
           "api_key": "a6adae1843502c7becfac80b53ca41ac",
           "query" : search,
@@ -37,22 +18,26 @@ $(document).ready(
         },
         "method": "GET",
         "success": function (data, stato) {
-          print("serie-tv", data.results);
+          print(type, data.results);
         },
-        error: function (richiesta, stato, errori) {
+        error: function (error) {
         alert("E' avvenuto un errore. " + errore);
         }
       });
-    };
-      // /chiamata api film
+    }
+    // /chiamata api
 
     // template Handlebars + oggetti
-    function print(type,results){
+    function print(type, results){
 
       var source = $("#entry-template").html();
       var template = Handlebars.compile(source);
 
       for (var i = 0; i < results.length; i++){
+
+        if(results[i].length == 0){
+          alert("Non sono stati produtti risultati per questa ricerca")
+        }
 
         var vote = rightVote(results[i].vote_average);
         var language = flag(results[i].original_language);
@@ -70,13 +55,12 @@ $(document).ready(
           "language": language,
           "vote": vote,
           "type": type,
-          "cast": results[i].cast,
-          "overview" : results[i].overview
+          "overview" : results[i].overview,
         };
 
         var html = template(context);
 
-        if (type == "film"){
+        if (type == "movie"){
           $("#movie").append(html);
         } else {
           $("#tvshow").append(html);
@@ -85,16 +69,21 @@ $(document).ready(
     }
     // /template Handlebars + oggetti
 
+    // pulizia del contenuto
+    function resetSearch() {
+      $("#movies").html("");
+      $("#tvshow").html("");
+      $("#cerca").val("");
+    }
+    // pulizia del contenuto
+
     // keypress
       $('#cerca').keyup(function(event){
         if (event.which==13) {
           var search = $('#cerca').val();
-          $("#movie").html("");
-          $("#tvshow").html("");
-
-          $("#cerca").val("");
-          chiamataFilm(search);
-          chiamataTv(search);
+          resetSearch();
+          getData("movie", search);
+          getData("tv", search);
         }
       });
 
@@ -102,13 +91,11 @@ $(document).ready(
       $(".clicca").click(
         function(){
           var search = $('#cerca').val();
-          $("#movie").html("");
-          $("#tvshow").html("");
-          $("#cerca").val("");
-          chiamataFilm(search);
-          chiamataTv(search);
+          resetSearch();
+          getData("movie", search);
+          getData("tv", search);
        });
-     // /ricerca film
+     // /button
 
      // voto trasformato in stelle
      function rightVote(vote) {
@@ -155,11 +142,12 @@ $(document).ready(
        // animate background
        $(".background-container").show();
        $(".logo").animate({
-          fontSize: '20em'}, 3000);
+          fontSize: '15em'}, 2000);
        setTimeout(function() { $(".background-container").hide();
 
        $(".all-container").show();
-     }, 4000);
+     }, 3000);
      // /animate background
+
 
   });
