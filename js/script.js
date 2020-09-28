@@ -144,16 +144,18 @@ $(document).ready(
         var poster = "https://image.tmdb.org/t/p/w342" + results[i].poster_path;
       }
 
+      // chiamata attori
       var actors = [];
       await $.ajax(
       {
-        url:  `${url}${type}/${results[i].id}/credits`,
+        url: url + type+'/'+results[i].id +'/credits',
         "data" : {
           "api_key": "a6adae1843502c7becfac80b53ca41ac",
           "language" :"it-IT"
         },
         "method": "GET",
         "success": function (data, stato) {
+
           if (data.cast.length) {
             var max = data.cast.length = 5;
             for (var j = 0; j < max; j++) {
@@ -165,13 +167,18 @@ $(document).ready(
           console.log("E' avvenuto un errore. " + errore);
         }
       })
+      // chiamata attori
 
+      // generi film/tv
       var movieGenres = [];
       for (var x = 0; x < results[i].genre_ids.length; x++) {
         var genderId = results[i].genre_ids[x];
-        var g = genders[type].filter(function(val) { if (val.id == genderId) return val });
+        var g = genders[type].filter(function(val) {
+          if (val.id == genderId) return val });
         movieGenres.push(g[0].name);
       }
+      // /generi film/tv
+
 
       var context = {
         "poster" : poster,
