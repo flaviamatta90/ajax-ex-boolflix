@@ -179,7 +179,6 @@ $(document).ready(
       }
       // /generi film/tv
 
-
       var context = {
         "poster" : poster,
         "title": results[i].title || results[i].name,
